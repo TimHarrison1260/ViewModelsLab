@@ -1,0 +1,43 @@
+﻿@model ViewModelsLab.Models.OrderDetailViewModel
+
+@{
+    ViewBag.Title = "OrderDetail";
+}
+
+<h2>OrderDetail</h2>
+
+<fieldset>
+    <legend>
+            @Html.DisplayNameFor(model => model.OrderId)
+            :
+            @Html.DisplayFor(model => model.OrderId)
+    </legend>
+
+    <div>
+        @Html.DisplayNameFor(model => model.CustomerName)
+        :
+        @Html.DisplayFor(model => model.CustomerName)
+    </div>
+
+    @foreach(var item in Model.OrderLineItems) {
+        <ul>
+            <li>
+                @Html.DisplayFor(model => item.ProductName)
+                :
+                @Html.DisplayNameFor(model => item.Quantity)
+                 - 
+                @Html.DisplayFor(model => item.Quantity)
+            </li>
+        </ul>
+    }
+
+    <div>
+        @Html.DisplayNameFor(model => model.TotalCost)
+        :
+        @Html.DisplayFor(model => model.TotalCost)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Add item to this order", "Additem", new { id=Model.OrderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
